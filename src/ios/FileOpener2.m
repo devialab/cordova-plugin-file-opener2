@@ -33,7 +33,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
     NSString *path = [[command.arguments objectAtIndex:0] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 	NSString *contentType = nil;
-	BOOL showPreview = YES;
+	BOOL showPreview = NO;
 
 	if([command.arguments count] == 2) { // Includes contentType
 		contentType = [command.arguments objectAtIndex:1];
@@ -49,7 +49,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 	NSArray *dotParts = [path componentsSeparatedByString:@"."];
 	NSString *fileExt = [dotParts lastObject];
 
-	NSString *uti = (__bridge NSString *)UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)fileExt, NULL);
+	NSString *uti = contentType;//(__bridge NSString *)UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)fileExt, NULL);
 
 	dispatch_async(dispatch_get_main_queue(), ^{
 		NSURL *fileURL = [NSURL URLWithString:path];
