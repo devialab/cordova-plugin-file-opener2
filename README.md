@@ -26,12 +26,9 @@ Usage
         fileMIMEType, 
         {
             error : function(){ }, 
-            success : function(){ },
-            position : [x, y]
+            success : function(){ } 
         } 
     );
-
-`position` array of coordinates from top-left device screen, use for iOS dialog positioning
 
 Examples
 --------
